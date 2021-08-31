@@ -1,14 +1,13 @@
 import React from "react";
 import './App.css';
 
-class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-     isListView: true
-    };
 
-  }
+function App(){
+  return(
+  <h1>Hello</h1>
+  )
+  
 }
+
 
 export default App;
