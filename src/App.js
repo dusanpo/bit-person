@@ -1,12 +1,29 @@
-import React from "react";
+import React,{Fragment} from "react";
+import Header from "./components/partials/Header";
+import Footer from "./components/partials/Footer";
+
 import './App.css';
 
 
-function App(){
-  return(
-  <h1>Hello</h1>
-  )
-  
+class App extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+
+
+render(){
+ 
+return(
+  <Fragment>
+<Header/>
+<Footer/>
+</Fragment>
+)
+
+
+}
+
 }
 
 
