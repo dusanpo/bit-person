@@ -17,6 +17,7 @@ render(){
     return(
        <div className = "usersWrapper">
         <ListView users = {this.props.users}/>
+        <GridView users = {this.props.users}/>
        </div> 
     )
 }

@@ -15,7 +15,7 @@ const ListView = ({users}) =>{
   }  
 
   const dateFormatter = (date)=>{
-    
+ 
     let dateNew = new Date (date).toLocaleString();
     let result = dateNew.split(",")
     result = result[0];
