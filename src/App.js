@@ -7,6 +7,7 @@ import ShowUsers from "./components/ShowUsers.jsx";
 
 
 import './App.css';
+import Search from "./components/Search.jsx";
 
 
 class App extends React.Component{
@@ -38,6 +39,7 @@ render(){
 return(
   <Fragment>
 <Header/>
+<Search/>
 <ShowUsers users={this.state.users}/>
 <Footer/>
 </Fragment>
