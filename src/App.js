@@ -15,7 +15,8 @@ class App extends React.Component{
     super(props);
     this.state = {
       isListView:true,
-      users:[]
+      users:[],
+      query: ''
   }
   this.onRefresh = this.onRefresh.bind(this);
   }
@@ -51,7 +52,7 @@ render(){
 return(
   <Fragment>
 <Header isListView = {this.state.isListView} onLayoutToggle = {this.onLayoutToggle} onRefresh = {this.onRefresh} />
-<Search/>
+<Search search={(q)=>this.setState(q)} query={this.state.query}/>
 <ShowUsers isListView = {this.state.isListView} users={this.state.users}/>
 <Footer/>
 </Fragment>
