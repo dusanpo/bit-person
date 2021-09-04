@@ -10,16 +10,27 @@ const ListView = ({users}) =>{
     return  result;
      }
 
+     const capitalizeName = (name) => {
+      return name.charAt(0).toUpperCase() + name.slice(1);
+  }  
+
+  const dateFormatter = (date)=>{
     
+    let dateNew = new Date (date).toLocaleString();
+    let result = dateNew.split(",")
+    result = result[0];
+    return result;
+
+}
 
     return(
-  <ul className = "colection">
+  <ul className = "collection spacing">
           {users.slice(0,10).map((post, index) =>(
             <li className="collection-item avatar" key = {index}>
                 <img src={post.picture.thumbnail} alt="" className="circle"/>
-                <span className="title">name: {post.name.first}</span>
+                <span className="title">name: {capitalizeName(post.name.first)}</span>
                 <p>email: {hideMail(post.email)} <br/>
-                   date of birth: {post.dob.date}   
+                   date of birth: {dateFormatter(post.dob.date)}   
                 </p>
             </li> 
         )
