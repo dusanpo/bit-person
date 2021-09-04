@@ -6,37 +6,17 @@ class ShowUsers extends React.Component{
 
 constructor(props){
     super(props);
-
-    this.state = {
-        users:[]
-    };
-}
-
-getUsersList=()=>{
-    fetch("https://randomuser.me/api/?results=15").then(res =>{
-   return res.json();
-
-    }).then(response =>{
-        
-        this.setState({
-          users: response.results
-        });
-    })
-  
-
-}
-
-componentDidMount(){
-    this.getUsersList();
+    console.log(props)
    
 }
 
+
 render(){
 
-
+    console.log(this.props);
     return(
        <div className = "usersWrapper">
-        <ListView users = {this.state.users}/>
+        <ListView users = {this.props.users}/>
        </div> 
     )
 }

@@ -10,7 +10,7 @@ const ListView = ({users}) =>{
     return  result;
      }
 
-
+    
 
     return(
   <ul className = "colection">
