@@ -1,6 +1,6 @@
 import React from "react";
 
-
+import "./GridView.css";
 
 
 export const GridView = ({users}) =>{
@@ -30,8 +30,14 @@ export const GridView = ({users}) =>{
      <span className = "card-title">{post.name.first}</span>
      </div>
      <div className = "card-content">
-          <p>email: {hideMail(post.email)};</p>
-          <p>date of birth: {formatDate(post.dob.date)};</p>
+        <div className="flexy">
+            <i className="material-icons prefix">email</i>
+            <p>{hideMail(post.email)} </p> 
+        </div> 
+        <div className="flexy">
+            <i className="material-icons prefix">redeem</i>
+            <p> {formatDate(post.dob.date)}</p>
+        </div> 
      </div>  
         
      
