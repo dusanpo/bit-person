@@ -4,7 +4,8 @@ export default function Search({search, query}) {
 
     const onSearch = (q)=>{
         //setText(q)
-        search(q)
+        console.log(q);
+        search({query: q})
     }
     return (
         <div>
@@ -14,13 +15,14 @@ export default function Search({search, query}) {
                     <div className="input-field col s12">
                         <i className="material-icons prefix">search</i>
                         <input type="text" 
+                        placeholder="Search..."
                         id="autocomplete-input" 
                         className="autocomplete"
                         autoFocus
                         onChange={(e)=>onSearch(e.target.value)}
-                        value=""
+                        value={query}
                         />
-                        <label for="autocomplete-input">Search...</label>
+                        
                     </div>
                 </div>
                 </div>
