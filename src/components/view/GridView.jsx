@@ -18,7 +18,7 @@ export const GridView = ({users}) =>{
      
      
       return(
-            <div className = "row gridView" id = "view">
+            <div className = "container row gridView" id = "view">
               
              {users.slice(0,9).map( (post,index) =>(
          
@@ -26,7 +26,7 @@ export const GridView = ({users}) =>{
      <div className = "col s4" key = {index} >
              <div className = "card" >
              <div className = "card-image">
-     <img  src = {post.picture.medium} alt = "portrait"></img>
+     <img  src = {post.picture.large} alt = "portrait"></img>
      <span className = "card-title">{post.name.first}</span>
      </div>
      <div className = "card-content">

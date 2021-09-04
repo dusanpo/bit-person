@@ -17,6 +17,7 @@ class App extends React.Component{
       isListView:true,
       users:[]
   }
+  this.onRefresh = this.onRefresh.bind(this);
   }
 
   onLayoutToggle = () => {
@@ -34,6 +35,10 @@ class App extends React.Component{
   
 
 }
+onRefresh(){
+  this.getUsersList();
+ 
+}
 
 componentDidMount(){
     this.getUsersList();
@@ -45,7 +50,7 @@ render(){
  
 return(
   <Fragment>
-<Header isListView = {this.state.isListView} onLayoutToggle = {this.onLayoutToggle}/>
+<Header isListView = {this.state.isListView} onLayoutToggle = {this.onLayoutToggle} onRefresh = {this.onRefresh} />
 <Search/>
 <ShowUsers isListView = {this.state.isListView} users={this.state.users}/>
 <Footer/>
