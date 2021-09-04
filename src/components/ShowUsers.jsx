@@ -1,6 +1,7 @@
 import React from "react";
 
 import ListView from "./view/ListView.jsx";
+import { GridView } from "./view/GridView.jsx";
 
 class ShowUsers extends React.Component{
 
@@ -16,8 +17,11 @@ render(){
     console.log(this.props);
     return(
        <div className = "usersWrapper">
-        <ListView users = {this.props.users}/>
-        <GridView users = {this.props.users}/>
+         {
+                 this.props.isListView
+                ? <ListView users = {this.props.users} />
+                : <GridView users = {this.props.users}/>
+             }
        </div> 
     )
 }

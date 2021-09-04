@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import "./GridView.css";
+
 
 export const GridView = ({users}) =>{
 

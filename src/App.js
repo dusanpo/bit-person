@@ -14,8 +14,15 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      isListView:true,
       users:[]
   }
+  }
+
+  onLayoutToggle = () => {
+    this.setState({
+    isListView: !this.state.isListView
+    })  
   }
 
   getUsersList=()=>{
@@ -38,9 +45,9 @@ render(){
  
 return(
   <Fragment>
-<Header/>
+<Header isListView = {this.state.isListView} onLayoutToggle = {this.onLayoutToggle}/>
 <Search/>
-<ShowUsers users={this.state.users}/>
+<ShowUsers isListView = {this.state.isListView} users={this.state.users}/>
 <Footer/>
 </Fragment>
 )
