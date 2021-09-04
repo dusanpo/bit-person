@@ -45,15 +45,29 @@ componentDidMount(){
     this.getUsersList();
    
 }
+componentDidUpdate(prevProps, prevState){
+  if(this.state.query !== prevState.query){
+
+    fetch("https://randomuser.me/api/?results=15")
+      .then(res =>{return res.json();})    
+      .then(response =>{
+        console.log(response);
+        this.setState({users: response.results})})
+  }
+
+}
 
 
 render(){
+
+ const filteredUsers = this.state.users.filter(item => item.name.first.toLowerCase().includes(this.state.query.toLowerCase()));
+
  
 return(
   <Fragment>
 <Header isListView = {this.state.isListView} onLayoutToggle = {this.onLayoutToggle} onRefresh = {this.onRefresh} />
 <Search search={(q)=>this.setState(q)} query={this.state.query}/>
-<ShowUsers isListView = {this.state.isListView} users={this.state.users}/>
+<ShowUsers isListView = {this.state.isListView} users={filteredUsers}/>
 <Footer/>
 </Fragment>
 )
