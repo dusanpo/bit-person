@@ -1,81 +1,27 @@
-import React,{Fragment} from "react";
+import React from "react";
 
-import Header from "./components/partials/Header.jsx";
-import Footer from "./components/partials/Footer.jsx";
+import "./App.css";
 
-import ShowUsers from "./components/ShowUsers.jsx";
+import Home from "./components/Home.jsx";
 
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+ 
+import About from "./About/About.jsx";
 
-import './App.css';
-import Search from "./components/Search.jsx";
-
-
-class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      isListView:true,
-      users:[],
-      query: ''
-  }
-  this.onRefresh = this.onRefresh.bind(this);
-  }
-
-  onLayoutToggle = () => {
-    this.setState({
-    isListView: !this.state.isListView
-    })  
-  }
-
-  getUsersList=()=>{
-    fetch("https://randomuser.me/api/?results=15")
-    .then(res =>{return res.json();})    
-    .then(response =>{
-      console.log(response);
-      this.setState({users: response.results})})
+function App(){
+  return(
+  <Router>
+    <Switch>
+    <Route exact path = "/home" component = {Home}/>
+    <Route exact path = "/about/:title" component = {About}/>
+    <Route exact path = "/">
+    <Redirect to = "/home"/>
+    </Route>
+    </Switch>
+  </Router>
   
-
-}
-onRefresh(){
-  this.getUsersList();
- 
-}
-
-componentDidMount(){
-    this.getUsersList();
-   
-}
-componentDidUpdate(prevProps, prevState){
-  if(this.state.query !== prevState.query){
-
-    fetch("https://randomuser.me/api/?results=15")
-      .then(res =>{return res.json();})    
-      .then(response =>{
-        console.log(response);
-        this.setState({users: response.results})})
+  )
+    
   }
-
-}
-
-
-render(){
-
- const filteredUsers = this.state.users.filter(item => item.name.first.toLowerCase().includes(this.state.query.toLowerCase()));
-
- 
-return(
-  <Fragment>
-<Header isListView = {this.state.isListView} onLayoutToggle = {this.onLayoutToggle} onRefresh = {this.onRefresh} />
-<Search search={(q)=>this.setState(q)} query={this.state.query}/>
-<ShowUsers isListView = {this.state.isListView} users={filteredUsers}/>
-<Footer/>
-</Fragment>
-)
-
-
-}
-
-}
-
-
-export default App;
+  
+  export default App;
